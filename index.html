@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marine Traffic Static</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <div class="numbertext">1 / 4</div>
+            <img src="images/4.png"
+                style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext">2 / 4</div>
+            <img src="images/2.png"
+                style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext">3/ 4</div>
+            <img src="images/5.png"
+                style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext">4 / 4</div>
+            <img src="images/1.png"
+                style="width:100%">
+        </div>
+        
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    <script>
+        let slideIndex = 0;
+        let timeoutId = null;
+        const slides = document.getElementsByClassName("mySlides");
+
+        showSlides();
+        function currentSlide(index) {
+            slideIndex = index;
+            showSlides();
+        }
+        function plusSlides(step) {
+
+            if (step < 0) {
+                slideIndex -= 2;
+
+                if (slideIndex < 0) {
+                    slideIndex = slides.length - 1;
+                }
+            }
+
+            showSlides();
+        }
+        function showSlides() {
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1
+            }
+            slides[slideIndex - 1].style.display = "block";
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
+            timeoutId = setTimeout(showSlides, 5000); // Change image every 5 seconds
+        }
+    </script>
+
+
+</body>
+
+</html>
